@@ -44,9 +44,12 @@ class ModMatrix(matrix):
         return minor
 
     def is_invertible(self, p):
-        matrix_invertible = self.shape[0] == self.shape[1] and numpy.linalg.matrix_rank(self) == self.shape[0]
-        try:
+        """ check matrix is invertible
+        determinan and matrix both should be invertible by modul p
+        """
+        try: # if error raises means determinan isnt invertible
             self.det_mod_inv(p)
         except:
             return False
-        return matrix_invertible
+        # if determinan is okay, check matrix to be invertible
+        return self.shape[0] == self.shape[1] and numpy.linalg.matrix_rank(self) == self.shape[0]
