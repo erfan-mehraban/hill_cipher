@@ -42,3 +42,11 @@ class ModMatrix(matrix):
                 q = q + 1
             p = p + 1
         return minor
+
+    def is_invertible(self, p):
+        matrix_invertible = self.shape[0] == self.shape[1] and numpy.linalg.matrix_rank(self) == self.shape[0]
+        try:
+            self.det_mod_inv(p)
+        except:
+            return False
+        return matrix_invertible
