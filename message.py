@@ -15,6 +15,7 @@ class Message(ModMatrix):
 
     @staticmethod
     def _code(msg, height):
+        msg = msg.lower()
         width = math.ceil(len(msg)/height)
         coded_data = numpy.zeros(shape=(height, width))
         for row in range(height):
